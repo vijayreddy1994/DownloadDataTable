@@ -1,0 +1,18 @@
+<template>
+    <h1> Accounts Data </h1>
+    <lightning-spinner if:true={isLoading}></lightning-spinner>
+    <template if:true={accounts}>
+        <lightning-datatable
+            key-field="Id"
+            data={accounts}
+            columns={columns}
+            onrowselection={handleRowSelection}
+        >
+        </lightning-datatable>
+    </template>
+    <lightning-button label="Export to CSV" onclick={exportToCSV}></lightning-button>
+    <template if:true={error}>
+        <p>Error: {error.body.message}</p>
+    </template>
+   
+</template>
